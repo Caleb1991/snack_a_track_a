@@ -8,4 +8,9 @@ RSpec.describe Snack do
     it {should validate_presence_of(:sweet)}
     it {should validate_presence_of(:rating)}
   end
+
+  describe 'relationships' do
+    it {should have_many(:users_snack)}
+    it {should have_many(:users).through(:users_snack)}
+  end
 end
