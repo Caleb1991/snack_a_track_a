@@ -11,6 +11,6 @@ RSpec.describe User do
 
   describe 'relationships' do
     it {should have_many(:users_snacks)}
-    it {should have_many(:snacks), through: :users_snacks}
+    it {should have_many(:snacks).through(:users_snacks)}
   end
 end
