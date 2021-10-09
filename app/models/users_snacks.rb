@@ -1,2 +1,0 @@
-class UsersSnacks < ApplicationRecord
-end

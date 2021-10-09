@@ -10,6 +10,7 @@ RSpec.describe Snack do
   end
 
   describe 'relationships' do
-    it {should have_many(:users_snacks)}
-    it {should have_many(:users).through(:users_snacks)}
+    it {should have_many(:users_snack)}
+    it {should have_many(:users).through(:users_snack)}
+  end
 end
