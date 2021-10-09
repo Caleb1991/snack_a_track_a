@@ -1,24 +1,2 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Snack Tracker
+Snack Tracker is an API created to help track all of the snacks my partner and I consume. In addition to name, these snacks will also include a brief description, and a rating out of five. Seperate users will be able to be created, as well as logged in.
