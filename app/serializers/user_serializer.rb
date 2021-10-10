@@ -27,4 +27,30 @@ class UserSerializer
       }
     }
   end
+
+  def self.updated_user(user_attributes, user_id)
+    {data:
+      {
+        id: user_id,
+        type: 'Updated User',
+        attributes:
+        {
+          updates: user_attributes
+        }
+      }
+    }
+  end
+
+  def self.no_user_found
+    {data:
+      {
+        id: nil,
+        type: 'User Errors',
+        attributes:
+        {
+          errors: 'No user found for given id.'
+        }
+      }
+    }
+  end
 end
