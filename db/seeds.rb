@@ -10,5 +10,5 @@ snack_2 = Snack.create!(name: 'Star Crunch', description: 'AMAZING', savory: fal
 snack_3 = Snack.create!(name: 'Fruit by the Foot', description: 'INCREDIBLE', savory: false, sweet: true)
 
 users_snack_1 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_1.id)
-users_snack_1 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_2.id)
-users_snack_1 = UsersSnack.create!(user_id: user_2.id, snack_id: snack_3.id)
+users_snack_2 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_2.id)
+users_snack_3 = UsersSnack.create!(user_id: user_2.id, snack_id: snack_3.id)
