@@ -73,4 +73,30 @@ RSpec.describe 'Reviews API' do
       expect(error_message[:data][:attributes][:message]).to eq('Review could not be found for given id.')
     end
   end
+
+
+  describe '#destroy' do
+    it 'deletes a review' do
+      expect(Review.all.count).to eq(1)
+
+      delete "/api/v1/reviews/#{@review_1.id}"
+
+      expect(response).to be_successful
+      expect(Review.all.count).to eq(0)
+
+      successful_delete = JSON.parse(response.body, symbolize_names: true)
+
+      expect(successful_delete[:data][:attributes][:message]).to eq('Review has been successfully deleted.')
+    end
+
+    it 'returns an error if review does not exist' do
+      delete "/api/v1/reviews/9283873"
+
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message[:data][:attributes][:message]).to eq('Review could not be found for given id.')
+    end
+  end
 end
