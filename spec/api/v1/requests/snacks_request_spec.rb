@@ -78,4 +78,26 @@ RSpec.describe 'Snack API' do
       expect(error_message[:data][:attributes][:message]).to eq('Snack not found for given id.')
     end
   end
+
+  describe '#destroy' do
+    it 'deletes a given snack' do
+      delete "/api/v1/snacks/#{@snack.id}"
+
+      expect(response).to be_successful
+
+      deleted_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(deleted_response[:data][:attributes][:message]).to eq('Snack successfully deleted.')
+    end
+
+    it 'returns an error if snack is not found' do
+      delete '/api/v1/snacks/123434123'
+
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message[:data][:attributes][:message]).to eq('Snack not found for given id.')
+    end
+  end
 end
