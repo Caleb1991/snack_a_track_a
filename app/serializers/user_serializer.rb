@@ -53,4 +53,17 @@ class UserSerializer
       }
     }
   end
+
+  def self.deleted_user
+    {data:
+      {
+        id: nil,
+        type: 'Deleted User',
+        attributes:
+        {
+          message: 'User has been deleted.'
+        }
+      }
+    }
+  end
 end

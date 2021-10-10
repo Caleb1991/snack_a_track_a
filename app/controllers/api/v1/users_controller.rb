@@ -20,6 +20,17 @@ class Api::V1::UsersController < ApplicationController
     render json: UserSerializer.updated_user(user_attributes, user.id)
   end
 
+  def destroy
+    begin
+      user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      return render json: UserSerializer.no_user_found, status: 404
+    end
+
+    user.delete
+    render json: UserSerializer.deleted_user
+  end
+
   private
   def user_attributes
     JSON.parse(request.body.read, symbolize_names: true)
