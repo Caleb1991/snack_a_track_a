@@ -121,7 +121,7 @@ RSpec.describe 'Snack API' do
 
       snack = JSON.parse(response.body, symbolize_names: true)
 
-      expect(snack[:data][:attributes][:snack][:name]).to eq(@snack.name)
+      expect(snack[:data][:attributes][:name]).to eq(@snack.name)
     end
 
     it 'returns an error if snack does not exist' do
