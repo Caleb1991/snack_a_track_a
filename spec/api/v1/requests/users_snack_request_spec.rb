@@ -36,7 +36,7 @@ RSpec.describe 'UsersSnack API' do
 
       users_snack_error = JSON.parse(response.body, symbolize_names: true)
 
-      expect(users_snack_error[:data][:attributes][:errors]).to eq('Must include snack_id')
+      expect(users_snack_error[:data][:attributes][:errors]).to eq(["Snack can't be blank", "Snack must exist"])
     end
   end
 end
