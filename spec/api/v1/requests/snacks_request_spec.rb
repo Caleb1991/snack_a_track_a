@@ -55,7 +55,7 @@ RSpec.describe 'Snack API' do
 
       expect(@snack.name).to_not eq('Doritos')
 
-      patch "/api/v1/#{@snack.id}", params: snack_payload, as: :json
+      patch "/api/v1/snacks/#{@snack.id}", params: snack_payload, as: :json
 
       expect(response).to be_successful
 
@@ -69,13 +69,13 @@ RSpec.describe 'Snack API' do
         name: 'Doritos'
       }
 
-      patch "/api/v1/1232341", params: snack_payload, as: :json
+      patch "/api/v1/snacks/1232341", params: snack_payload, as: :json
 
       expect(response).to_not be_successful
 
       error_message = JSON.parse(response.body, symbolize_names: true)
 
-      expect(error_message[:data][:attributes][:error]).to eq('Snack not found with given id.')
+      expect(error_message[:data][:attributes][:message]).to eq('Snack not found for given id.')
     end
   end
 end

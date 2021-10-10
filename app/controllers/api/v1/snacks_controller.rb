@@ -9,6 +9,17 @@ class Api::V1::SnacksController < ApplicationController
     end
   end
 
+  def update
+    begin
+      snack = Snack.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      return render json: SnackSerializer.snack_not_found, status: 400
+    end
+
+    snack.update(snack_attributes)
+    render json: SnackSerializer.updates_to_snack(snack_attributes, snack.id)
+  end
+
   private
   def snack_attributes
     JSON.parse(request.body.read, symbolize_names: true)
