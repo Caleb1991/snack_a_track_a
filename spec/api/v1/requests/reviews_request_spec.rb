@@ -56,7 +56,7 @@ RSpec.describe 'Reviews API' do
 
       updated_review = JSON.parse(response.body, symbolize_names: true)
 
-      expect(updated_review[:data][:attributes][:updated_attributes][:rating]).to eq(review_payload[:rating])
+      expect(updated_review[:data][:attributes][:updates][:rating]).to eq(review_payload[:rating])
     end
 
     it 'returns an error when the review does not exist' do
@@ -70,7 +70,7 @@ RSpec.describe 'Reviews API' do
 
       error_message = JSON.parse(response.body, symbolize_names: true)
 
-      expect(error_message[:data][:attributes][:error]).to eq('Review could not be found for given id.')
+      expect(error_message[:data][:attributes][:message]).to eq('Review could not be found for given id.')
     end
   end
 end
