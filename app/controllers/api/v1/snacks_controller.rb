@@ -2,6 +2,16 @@ class Api::V1::SnacksController < ApplicationController
   def index
     render json: SnackSerializer.all_snacks(Snack.all)
   end
+
+  def show
+    begin
+      snack = Snack.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      return render json: SnackSerializer.snack_not_found, status: 400
+    end
+
+    render json: SnackSerializer.single_snack(snack)
+  end
   
   def create
     snack = Snack.create(snack_attributes)

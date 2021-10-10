@@ -112,4 +112,26 @@ RSpec.describe 'Snack API' do
       expect(snacks[:data][:attributes][:snacks][0][:name]).to eq('Funyuns')
     end
   end
+
+  describe '#show' do
+    it 'returns a single snack' do
+      get "/api/v1/snacks/#{@snack.id}"
+
+      expect(response).to be_successful
+
+      snack = JSON.parse(response.body, symbolize_names: true)
+
+      expect(snack[:data][:attributes][:name]).to eq(@snack.name)
+    end
+
+    it 'returns an error if snack does not exist' do
+      get '/api/v1/snacks/12134141'
+
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message[:data][:attributes][:message]).to eq('Snack not found for given id.')
+    end
+  end
 end

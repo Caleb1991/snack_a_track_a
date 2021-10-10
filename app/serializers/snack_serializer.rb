@@ -74,4 +74,14 @@ class SnackSerializer
       }
     }
   end
+
+  def self.single_snack(snack)
+    {data:
+      {
+        id: snack.id,
+        type: 'Snack',
+        attributes: snack
+      }
+    }
+  end
 end
