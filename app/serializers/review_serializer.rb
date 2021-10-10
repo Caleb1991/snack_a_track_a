@@ -21,4 +21,30 @@ class ReviewSerializer
       }
     }
   end
+
+  def self.review_not_found
+    {data:
+      {
+        id: nil,
+        type: 'Review',
+        attributes:
+        {
+          message: 'Review could not be found for given id.'
+        }
+      }
+    }
+  end
+
+  def self.updated_review(attributes, review_id)
+    {data:
+      {
+        id: review_id,
+        type: 'Review',
+        attributes:
+        {
+          updates: attributes
+        }
+      }
+    }
+  end
 end

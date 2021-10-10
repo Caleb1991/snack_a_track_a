@@ -42,4 +42,35 @@ RSpec.describe 'Reviews API' do
       expect(errors[:data][:attributes][:errors]).to eq(["Description can't be blank", "Users snack can't be blank", "Users snack must exist"])
     end
   end
+
+  describe '#update' do
+    it 'allows for updating a review' do
+      review_payload = {
+        rating: 5.0
+      }
+
+      expect(@review_1.rating).to eq(4.5)
+      patch "/api/v1/reviews/#{@review_1.id}", params: review_payload, as: :json
+
+      expect(response).to be_successful
+
+      updated_review = JSON.parse(response.body, symbolize_names: true)
+
+      expect(updated_review[:data][:attributes][:updates][:rating]).to eq(review_payload[:rating])
+    end
+
+    it 'returns an error when the review does not exist' do
+      review_payload = {
+        rating: 5.0
+      }
+
+      patch "/api/v1/reviews/9203293", params: review_payload, as: :json
+
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message[:data][:attributes][:message]).to eq('Review could not be found for given id.')
+    end
+  end
 end
