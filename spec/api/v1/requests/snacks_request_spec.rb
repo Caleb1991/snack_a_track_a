@@ -46,4 +46,36 @@ RSpec.describe 'Snack API' do
       expect(errors[:data][:attributes][:errors]).to eq(["Description can't be blank", "Sweet is not included in the list"])
     end
   end
+
+  describe 'update' do
+    it 'updates a given snacks attributes' do
+      snack_payload = {
+        name: 'Doritos'
+      }
+
+      expect(@snack.name).to_not eq('Doritos')
+
+      patch "/api/v1/#{@snack.id}", params: snack_payload, as: :json
+
+      expect(response).to be_successful
+
+      updated_snack = JSON.parse(response.body, symbolize_names: true)
+
+      expect(updated_snack[:data][:attributes][:updates][:name]).to eq(snack_payload[:name])
+    end
+
+    it 'returns an error if no snack found' do
+      snack_payload = {
+        name: 'Doritos'
+      }
+
+      patch "/api/v1/1232341", params: snack_payload, as: :json
+
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message[:data][:attributes][:error]).to eq('Snack not found with given id.')
+    end
+  end
 end
