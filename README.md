@@ -3,4 +3,4 @@ Snack Tracker is an API created to help track all of the snacks a user consumes.
 
 ## Schema
 
-<img width="721" alt="Screen Shot 2021-10-09 at 5 09 23 PM" src="https://user-images.githubusercontent.com/78196294/136675908-aa2d1598-9c8a-43f8-a94b-bd8baf2f6744.png">
+<img width="666" alt="Screen Shot 2021-10-10 at 7 53 50 AM" src="https://user-images.githubusercontent.com/78196294/136698698-76972f41-524b-46e3-8729-135d4af0ba4f.png">
