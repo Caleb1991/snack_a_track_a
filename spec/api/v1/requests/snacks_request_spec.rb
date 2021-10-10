@@ -100,4 +100,16 @@ RSpec.describe 'Snack API' do
       expect(error_message[:data][:attributes][:message]).to eq('Snack not found for given id.')
     end
   end
+
+  describe '#index' do
+    it 'returns all snacks' do
+      get '/api/v1/snacks'
+
+      expect(response).to be_successful
+
+      snacks = JSON.parse(response.body, symbolize_names: true)
+
+      expect(snacks[:data][:attributes][:snacks][0][:name]).to eq('Doritos')
+    end
+  end
 end
