@@ -90,7 +90,7 @@ RSpec.describe 'Reviews API' do
     end
 
     it 'returns an error if review does not exist' do
-      delete "/api/v1/reviews/#{@review_1.id}"
+      delete "/api/v1/reviews/9283873"
 
       expect(response).to_not be_successful
 

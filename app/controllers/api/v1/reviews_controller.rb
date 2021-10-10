@@ -20,6 +20,17 @@ class Api::V1::ReviewsController < ApplicationController
     render json: ReviewSerializer.updated_review(review_attributes, review.id)
   end
 
+  def destroy
+    begin
+      review = Review.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      return render json: ReviewSerializer.review_not_found, status: 409
+    end
+
+    review.delete
+    render json: ReviewSerializer.review_deleted
+  end
+
   private
   def review_attributes
     JSON.parse(request.body.read, symbolize_names: true)

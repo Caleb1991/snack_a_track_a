@@ -47,4 +47,17 @@ class ReviewSerializer
       }
     }
   end
+
+  def self.review_deleted
+    {data:
+      {
+        id: nil,
+        type: 'Review',
+        attributes:
+        {
+          message: 'Review has been successfully deleted.'
+        }
+      }
+    }
+  end
 end
