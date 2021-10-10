@@ -3,7 +3,17 @@ class Api::V1::UsersController < ApplicationController
   def index
     render json: UserSerializer.all_users(User.all)
   end
-  
+
+  def show
+    begin
+      user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      return render json: UserSerializer.no_user_found, status: 404
+    end
+
+    render json: UserSerializer.single_user(user)
+  end
+
   def create
     user = User.create(user_attributes)
 

@@ -120,4 +120,16 @@ RSpec.describe 'User API' do
       expect(users[:data][:attributes][:users][0][:username]).to eq('Larry1231')
     end
   end
+
+  describe '#show' do
+    it 'returns a given user' do
+      get "/api/v1/users/#{@user.id}"
+
+      expect(response).to be_successful
+
+      user = JSON.parse(response.body, symbolize_names: true)
+
+      expect(user[:data][:attributes][:username]).to eq(@user.username)
+    end
+  end
 end

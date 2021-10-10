@@ -13,6 +13,16 @@ class UserSerializer
     }
   end
 
+  def self.single_user(user)
+    {data:
+      {
+        id: user.id,
+        type: 'User',
+        attributes: user
+      }
+    }
+  end
+
   def self.new_user(user_attributes)
     {data:
       {
