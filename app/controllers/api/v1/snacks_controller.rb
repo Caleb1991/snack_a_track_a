@@ -1,4 +1,8 @@
 class Api::V1::SnacksController < ApplicationController
+  def index
+    render json: SnackSerializer.all_snacks(Snack.all)
+  end
+  
   def create
     snack = Snack.create(snack_attributes)
 
