@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :users
       resources :snacks
       resources :users_snacks, only: [:create, :destroy]
+      resources :reviews, only: :create
     end
   end
 end

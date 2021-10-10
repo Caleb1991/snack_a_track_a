@@ -15,7 +15,7 @@ RSpec.describe 'Reviews API' do
       review_payload = {
         description: 'Out of this world',
         rating: 3.3,
-        users_snack_id: @users_snack_2
+        users_snack_id: @users_snack_2.id
       }
 
       post '/api/v1/reviews', params: review_payload, as: :json
@@ -39,7 +39,7 @@ RSpec.describe 'Reviews API' do
 
       errors = JSON.parse(response.body, symbolize_names: true)
 
-      expect(errors[:data][:attributes][:errors]).to eq('must include description.')
+      expect(errors[:data][:attributes][:errors]).to eq(["Description can't be blank", "Users snack can't be blank", "Users snack must exist"])
     end
   end
 end
