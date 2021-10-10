@@ -9,6 +9,17 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def update
+    begin
+      user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      return render json: UserSerializer.no_user_found, status: 400
+    end
+
+    user.update(user_attributes)
+    render json: UserSerializer.updated_user(user_attributes, user.id)
+  end
+
   private
   def user_attributes
     JSON.parse(request.body.read, symbolize_names: true)

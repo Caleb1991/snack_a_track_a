@@ -61,13 +61,29 @@ RSpec.describe 'User API' do
 
       expect(@user.email).to_not eq(user_payload[:email])
 
-      patch "/api/v1/users/#{@user.id}"
+      patch "/api/v1/users/#{@user.id}", params: user_payload, as: :json
 
       expect(response).to be_successful
 
-      updated_user = JSON.parse(response.body, symbolize_names: true)
+      updates_to_user = JSON.parse(response.body, symbolize_names: true)
 
-      expect(updated_user[:data][:attributes][:email]).to eq(user_payload[:email])
+      expect(updates_to_user[:data][:attributes][:updates][:email]).to eq(user_payload[:email])
+    end
+
+    it 'returns error when user is not found' do
+      user_payload = {
+        email: 'RoaldRocks1122@MSN.Com'
+      }
+
+      expect(@user.email).to_not eq(user_payload[:email])
+
+      patch "/api/v1/users/33", params: user_payload, as: :json
+
+      expect(response).to_not be_successful
+
+      updates_to_user = JSON.parse(response.body, symbolize_names: true)
+
+      expect(updates_to_user[:data][:attributes][:errors]).to eq('No user found for given id.')
     end
   end
 end
