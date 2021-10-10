@@ -21,4 +21,30 @@ class UsersSnackSerializer
       }
     }
   end
+
+  def self.users_snack_not_found
+    {data:
+      {
+        id: nil,
+        type: 'UsersSnack Error',
+        attributes:
+        {
+          message: 'Users snack not found for given id.'
+        }
+      }
+    }
+  end
+
+  def self.succesfully_deleted
+    {data:
+      {
+        id: nil,
+        type: 'UsersSnack',
+        attributes:
+        {
+          message: 'Users snack successfully deleted.'
+        }
+      }
+    }
+  end
 end

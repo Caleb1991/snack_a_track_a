@@ -9,6 +9,17 @@ class Api::V1::UsersSnacksController < ApplicationController
     end
   end
 
+  def destroy
+    begin
+      users_snack = UsersSnack.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      return render json: UsersSnackSerializer.users_snack_not_found, status: 400
+    end
+
+    users_snack.delete
+    render json: UsersSnackSerializer.succesfully_deleted
+  end
+
   private
   def users_snack_parameters
     JSON.parse(request.body.read, symbolize_names:true)
