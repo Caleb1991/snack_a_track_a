@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'UsersSnack API' do
   before :each do
     @user = User.create(username: 'Larry1231', first_name: 'Larry', last_name: 'Larryington', email: 'LarryRocks21@Gmail.Com', password: '123Password', password_confirmation: '123Password')
-    @snack_1 = Snack.create!(name: 'Funyuns', description: 'DELICIOUS', savory: true, sweet: false, rating: 4.5)
-    @snack_2 = Snack.create!(name: 'Kit-Kat', description: 'Amazing', savory: false, sweet: true, rating: 3.77)
+    @snack_1 = Snack.create!(name: 'Funyuns', description: 'DELICIOUS', savory: true, sweet: false)
+    @snack_2 = Snack.create!(name: 'Kit-Kat', description: 'Amazing', savory: false, sweet: true)
     @users_snack = UsersSnack.create!(user_id: @user.id, snack_id: @snack_1.id)
   end
 
