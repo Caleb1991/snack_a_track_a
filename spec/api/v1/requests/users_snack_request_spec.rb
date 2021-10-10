@@ -39,4 +39,26 @@ RSpec.describe 'UsersSnack API' do
       expect(users_snack_error[:data][:attributes][:errors]).to eq(["Snack can't be blank", "Snack must exist"])
     end
   end
+
+  describe '#delete' do
+    it 'deletes a users_snack' do
+      delete "/api/v1/users_snacks/#{@users_snack.id}"
+
+      expect(response).to be_successful
+
+      deletion_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(deletion_message[:data][:attributes][:message]).to eq('Users snack successfully deleted.')
+    end
+
+    it 'returns an error if users snack does not exist' do
+      delete "/api/v1/users_snacks/9237223"
+
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message[:data][:attributes][:message]).to eq('Users snack not found for given id.')
+    end
+  end
 end
