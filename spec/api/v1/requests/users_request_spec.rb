@@ -117,7 +117,7 @@ RSpec.describe 'User API' do
 
       users = JSON.parse(response.body, symbolize_names: true)
 
-      expect(users[:data][:attributes][:users][0].username).to eq('Larry1231')
+      expect(users[:data][:attributes][:users][0][:username]).to eq('Larry1231')
     end
   end
 end

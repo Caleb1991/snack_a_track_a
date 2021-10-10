@@ -1,4 +1,9 @@
 class Api::V1::UsersController < ApplicationController
+
+  def index
+    render json: UserSerializer.all_users(User.all)
+  end
+  
   def create
     user = User.create(user_attributes)
 

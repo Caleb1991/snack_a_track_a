@@ -1,4 +1,18 @@
 class UserSerializer
+
+  def self.all_users(users)
+    {data:
+      {
+        id: 'All users',
+        type: 'All users',
+        attributes:
+        {
+          users: users
+        }
+      }
+    }
+  end
+
   def self.new_user(user_attributes)
     {data:
       {
