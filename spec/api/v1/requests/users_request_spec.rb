@@ -131,5 +131,15 @@ RSpec.describe 'User API' do
 
       expect(user[:data][:attributes][:username]).to eq(@user.username)
     end
+
+    it 'returns an error if given user is not found' do
+      get "/api/v1/users/9299232"
+
+      expect(response).to_not be_successful
+
+      user_error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(user_error[:data][:attributes][:errors]).to eq('No user found for given id.')
+    end
   end
 end
