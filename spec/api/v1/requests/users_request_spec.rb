@@ -5,7 +5,7 @@ RSpec.describe 'User API' do
     @user = User.create(username: 'Larry1231', first_name: 'Larry', last_name: 'Larryington', email: 'LarryRocks21@Gmail.Com', password: '123Password', password_confirmation: '123Password')
   end
 
-  describe 'create' do
+  describe '#create' do
     it 'creates a user' do
       user_payload = {
         username: 'Roald1991',
@@ -53,7 +53,7 @@ RSpec.describe 'User API' do
     end
   end
 
-  describe 'update' do
+  describe '#update' do
     it 'updates a users attribute(s)' do
       user_payload = {
         email: 'RoaldRocks1122@MSN.Com'
@@ -87,7 +87,7 @@ RSpec.describe 'User API' do
     end
   end
 
-  describe 'destroy' do
+  describe '#destroy' do
     it 'deletes a given user' do
       delete "/api/v1/users/#{@user.id}"
 
@@ -106,6 +106,18 @@ RSpec.describe 'User API' do
       no_user_error = JSON.parse(response.body, symbolize_names: true)
 
       expect(no_user_error[:data][:attributes][:errors]).to eq('No user found for given id.')
+    end
+  end
+
+  describe '#index' do
+    it 'returns all users' do
+      get '/api/v1/users'
+
+      expect(response).to be_successful
+
+      users = JSON.parse(response.body, symbolize_names: true)
+
+      expect(users[:data][:attributes][:users][0].username).to eq('Larry1231')
     end
   end
 end
