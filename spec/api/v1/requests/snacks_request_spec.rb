@@ -29,5 +29,21 @@ RSpec.describe 'Snack API' do
       expect(created_snack[:data][:attributes][:sweet]).to eq(snack_payload[:sweet])
       expect(created_snack[:data][:attributes][:rating]).to eq(snack_payload[:rating])
     end
+
+    it 'returns errors if snack cannot be created' do
+      snack_payload = {
+        name: 'Doritos',
+        savory: true,
+        rating: 2.5
+      }
+
+      post '/api/v1/snacks', params: snack_payload, as: :json
+
+      expect(response).to_not be_successful
+
+      errors = JSON.parse(response.body, symbolize_names: true)
+
+      expect(errors[:data][:attributes][:errors]).to eq(["Description can't be blank", "Sweet is not included in the list"])
+    end
   end
 end
