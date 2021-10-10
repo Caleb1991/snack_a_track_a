@@ -77,13 +77,35 @@ RSpec.describe 'User API' do
 
       expect(@user.email).to_not eq(user_payload[:email])
 
-      patch "/api/v1/users/33", params: user_payload, as: :json
+      patch "/api/v1/users/643523425", params: user_payload, as: :json
 
       expect(response).to_not be_successful
 
-      updates_to_user = JSON.parse(response.body, symbolize_names: true)
+      no_user_error = JSON.parse(response.body, symbolize_names: true)
 
-      expect(updates_to_user[:data][:attributes][:errors]).to eq('No user found for given id.')
+      expect(no_user_error[:data][:attributes][:errors]).to eq('No user found for given id.')
+    end
+  end
+
+  describe 'destroy' do
+    it 'deletes a given user' do
+      delete "/api/v1/users/#{@user.id}"
+
+      expect(response).to be_successful
+
+      deleted_user_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(deleted_user_response[:data][:attributes][:message]).to eq('User has been deleted.')
+    end
+
+    it 'returns error when user does not exist' do
+      delete "/api/v1/users/45242"
+
+      expect(response).to_not be_successful
+
+      no_user_error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(no_user_error[:data][:attributes][:errors]).to eq('No user found for given id.')
     end
   end
 end
