@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Snack API' do
   before :each do
-    @snack = Snack.create!(name: 'Funyuns', description: 'DELICIOUS', savory: true, sweet: false, rating: 4.5)
+    @snack = Snack.create!(name: 'Funyuns', description: 'DELICIOUS', savory: true, sweet: false)
   end
 
   describe '#create' do
@@ -11,8 +11,7 @@ RSpec.describe 'Snack API' do
         name: 'Doritos',
         description: 'BOLD',
         savory: true,
-        sweet: false,
-        rating: 2.5
+        sweet: false
       }
 
       expect(Snack.all.count).to eq(1)
@@ -33,8 +32,7 @@ RSpec.describe 'Snack API' do
     it 'returns errors if snack cannot be created' do
       snack_payload = {
         name: 'Doritos',
-        savory: true,
-        rating: 2.5
+        savory: true
       }
 
       post '/api/v1/snacks', params: snack_payload, as: :json
