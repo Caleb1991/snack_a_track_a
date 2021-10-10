@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2021_10_10_134216) do
   create_table "reviews", force: :cascade do |t|
     t.string "description"
     t.float "rating"
-    t.bigint "snack_id"
+    t.bigint "users_snacks_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["snack_id"], name: "index_reviews_on_snack_id"
+    t.index ["users_snacks_id"], name: "index_reviews_on_users_snacks_id"
   end
 
   create_table "snacks", force: :cascade do |t|
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_10_10_134216) do
     t.index ["user_id"], name: "index_users_snacks_on_user_id"
   end
 
-  add_foreign_key "reviews", "snacks"
+  add_foreign_key "reviews", "users_snacks", column: "users_snacks_id"
   add_foreign_key "users_snacks", "snacks"
   add_foreign_key "users_snacks", "users"
 end
