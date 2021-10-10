@@ -86,4 +86,16 @@ RSpec.describe 'User API' do
       expect(updates_to_user[:data][:attributes][:errors]).to eq('No user found for given id.')
     end
   end
+
+  describe 'delete' do
+    it 'deletes a given user' do
+      delete "/api/v1/users/#{@user.id}"
+
+      expect(response).to be_successful
+
+      deleted_user_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(deleted_user_response[:data][:attributes][:message]).to eq('User has been deleted.')
+    end
+  end
 end
