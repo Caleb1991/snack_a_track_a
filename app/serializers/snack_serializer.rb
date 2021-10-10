@@ -48,4 +48,17 @@ class SnackSerializer
       }
     }
   end
+
+  def self.deleted_snack
+    {data:
+      {
+        id: nil,
+        type: 'Deleted snack',
+        attributes:
+        {
+          message: 'Snack successfully deleted.'
+        }
+      }
+    }
+  end
 end
