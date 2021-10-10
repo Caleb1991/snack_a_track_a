@@ -13,7 +13,7 @@ class Api::V1::UsersController < ApplicationController
     begin
       user = User.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      return render json: UserSerializer.no_user_found, status: 400
+      return render json: UserSerializer.no_user_found, status: 404
     end
 
     user.update(user_attributes)
