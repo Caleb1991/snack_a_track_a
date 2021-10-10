@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'User API' do
+  before :each do
+    @user = User.create(username: 'Larry1231', first_name: 'Larry', last_name: 'Larryington', email: 'LarryRocks21@Gmail.Com', password: '123Password', password_confirmation: '123Password')
+  end
+
   describe 'create' do
     it 'creates a user' do
       user_payload = {
@@ -12,7 +16,7 @@ RSpec.describe 'User API' do
         password_confirmation: 'PenguinsRule11'
       }
 
-      expect(User.all.count).to eq(0)
+      expect(User.all.count).to eq(1)
 
       post '/api/v1/users', params: user_payload, as: :json
 
@@ -20,7 +24,7 @@ RSpec.describe 'User API' do
 
       user_response = JSON.parse(response.body, symbolize_names: true)
 
-      expect(User.all.count).to eq(1)
+      expect(User.all.count).to eq(2)
 
       expect(user_response[:data][:attributes][:username]).to eq(user_payload[:username])
       expect(user_response[:data][:attributes][:first_name]).to eq(user_payload[:first_name])
@@ -37,7 +41,7 @@ RSpec.describe 'User API' do
         password_confirmation: 'PenguinsRule11'
       }
 
-      expect(User.all.count).to eq(0)
+      expect(User.all.count).to eq(1)
 
       post '/api/v1/users', params: user_payload, as: :json
 
@@ -46,6 +50,24 @@ RSpec.describe 'User API' do
       error_response = JSON.parse(response.body, symbolize_names: true)
 
       expect(error_response[:data][:attributes][:errors]).to eq(["First name can't be blank", "Password confirmation doesn't match Password"])
+    end
+  end
+
+  describe 'update' do
+    it 'updates a users attribute(s)' do
+      user_payload = {
+        email: 'RoaldRocks1122@MSN.Com'
+      }
+
+      expect(@user.email).to_not eq(user_payload[:email])
+
+      patch "/api/v1/users/#{@user.id}"
+
+      expect(response).to be_successful
+
+      updated_user = JSON.parse(response.body, symbolize_names: true)
+
+      expect(updated_user[:data][:attributes][:email]).to eq(user_payload[:email])
     end
   end
 end
