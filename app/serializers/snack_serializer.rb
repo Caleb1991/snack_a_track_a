@@ -97,4 +97,17 @@ class SnackSerializer
       }
     }
   end
+
+  def self.top_five_user_snacks(snacks, user_id)
+    {data:
+      {
+        id: user_id,
+        type: "user's Snacks",
+        attributes:
+        {
+          snacks: snacks
+        }
+      }
+    }
+  end
 end

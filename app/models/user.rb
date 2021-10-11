@@ -5,4 +5,8 @@ class User < ApplicationRecord
   has_many :snacks, through: :users_snack
   has_many :reviews, through: :users_snack, dependent: :destroy
   has_secure_password
+
+  def top_five
+    reviews.order(rating: :desc).limit(5)
+  end
 end
