@@ -1,5 +1,5 @@
 # Snack-a-Track-a
-Snack-a-Track-a is an API created to help track all of the snacks a user consumes. Utilizing a many to many relationship, a user can have many snacks, and a snack can have many users. Due to relationships, we are also able to leverage a one to many relationship in that a snack may have many reviews through users snacks.
+Snack-a-Track-a is an API created to help track all of the snacks a user consumes. A user may add snacks they have eaten, recieve reccomendations for snacks, as well as rate snacks.
 
 ## Schema
 
