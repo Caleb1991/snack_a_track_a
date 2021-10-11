@@ -8,4 +8,10 @@ class Snack < ApplicationRecord
   def average_rating
     reviews.average(:rating).to_f
   end
+
+  def self.users_top_five_rated_snacks(user)
+    joins(:reviews)
+    .where('user_id = ?', user.id)
+    .order(rating: :desc)
+  end
 end
