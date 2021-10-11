@@ -19,7 +19,7 @@ RSpec.describe 'User Snack API' do
 
       snacks = JSON.parse(response.body, symbolize_names: true)
 
-      expect(snacks[:data][:attributes][0][:name]).to eq(@snack_1.name)
+      expect(snacks[:data][:attributes][:snacks][0][:name]).to eq(@snack_1.name)
     end
   end
 end
