@@ -9,9 +9,10 @@ class Snack < ApplicationRecord
     reviews.average(:rating).to_f
   end
 
-  def self.users_top_five_rated_snacks(user)
+  def self.users_top_rated_snacks(user, limit = 5)
     joins(:reviews)
     .where('user_id = ?', user.id)
     .order(rating: :desc)
+    .limit(limit)
   end
 end

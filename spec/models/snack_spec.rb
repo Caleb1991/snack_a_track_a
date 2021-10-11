@@ -43,11 +43,11 @@ RSpec.describe Snack do
     end
   end
 
-  describe '#users_top_five_rated_snacks' do
-    it 'returns a users top five rated snacks in descending order' do
+  describe '#users_top_rated_snacks' do
+    it 'returns a users top rated snacks in descending order, default limit of 5' do
       snacks = [@snack_5, @snack_4, @snack_3, @snack_2, @snack_1]
 
-      expect(Snack.users_top_five_rated_snacks(@user_1)).to eq(snacks)
+      expect(Snack.users_top_rated_snacks(@user_1)).to eq(snacks)
     end
   end
 end
