@@ -21,5 +21,15 @@ RSpec.describe 'User Snack API' do
 
       expect(snacks[:data][:attributes][:snacks][0][:name]).to eq(@snack_1.name)
     end
+
+    it 'returns an error is user cant be found' do
+      get '/api/v1/users/9238328/snacks'
+
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message[:data][:attributes][:errors]).to eq("No user found for given id.")
+    end
   end
 end
