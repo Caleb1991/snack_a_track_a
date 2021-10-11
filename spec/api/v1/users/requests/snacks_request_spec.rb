@@ -57,5 +57,15 @@ RSpec.describe 'User Snack API' do
       expect(highest_rated_snacks[:data][:attributes][:snacks][0][:rating]).to eq(5.0)
       expect(highest_rated_snacks[:data][:attributes][:snacks][4][:rating]).to eq(4.6)
     end
+
+    it 'returns an error is user cant be found' do
+      get '/api/v1/users/9238328/snacks/top_five'
+
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message[:data][:attributes][:errors]).to eq("No user found for given id.")
+    end
   end
 end
