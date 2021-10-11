@@ -11,6 +11,7 @@ snack_2 = Snack.create!(name: 'Star Crunch', description: 'Made with nougat.....
 snack_3 = Snack.create!(name: 'Honey Bun', description: 'Honey and Bun-y', savory: false, sweet: true)
 snack_4 = Snack.create!(name: 'Doritos', description: 'Bold', savory: true, sweet: false)
 snack_5 = Snack.create!(name: 'Cheetos', description: 'The one with the cheetah', savory: true, sweet: false)
+snack_6 = Snack.create!(name: 'Mountain Dew', description: 'Climb the mountain', savory: false, sweet: true)
 
 users_snack_1 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_1.id)
 users_snack_2 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_2.id)
