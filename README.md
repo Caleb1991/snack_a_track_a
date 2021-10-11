@@ -1,5 +1,5 @@
 # Snack-a-Track-a
-Snack-a-Track-a is an API created to help track all of the snacks a user consumes. A user may add snacks they have eaten, recieve reccomendations for snacks, as well as rate snacks.
+Snack-a-Track-a is an API created to help track all of the snacks a user consumes. A user may add snacks they have eaten, recieve recommendations for snacks, as well as rate snacks.
 
 ## Schema
 
