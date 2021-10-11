@@ -9,5 +9,7 @@ RSpec.describe Review do
 
   describe 'relationships' do
     it {should belong_to(:users_snack)}
+    it {should have_many(:users).through(:users_snack)}
+    it {should have_many(:snacks).through(:users_snack)}
   end
 end
