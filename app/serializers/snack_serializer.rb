@@ -84,4 +84,17 @@ class SnackSerializer
       }
     }
   end
+
+  def self.all_users_snacks(user)
+    {data:
+      {
+        id: user.id,
+        type: "User's Snacks",
+        attributes:
+        {
+          snacks: user.snacks
+        }
+      }
+    }
+  end
 end

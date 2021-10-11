@@ -1,6 +1,7 @@
 User.destroy_all
 Snack.destroy_all
 UsersSnack.destroy_all
+Review.destroy_all
 
 user_1 = User.create!(username: 'Roald1991', first_name: 'Roald', last_name: 'Roaldington', email: 'RoaldRules91@Gmail.Com', password: 'PenguinsRule11', password_confirmation: 'PenguinsRule11')
 user_2 = User.create!(username: 'Larry2020', first_name: 'Larry', last_name: 'Larryington', email: 'LarryRules91@Gmail.Com', password: 'PolarBearsRule11', password_confirmation: 'PolarBearsRule11')
