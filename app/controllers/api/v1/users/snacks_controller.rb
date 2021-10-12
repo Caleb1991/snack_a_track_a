@@ -16,6 +16,10 @@ class Api::V1::Users::SnacksController < ApplicationController
       return render json: UserSerializer.no_user_found, status: 404
     end
 
-    render json: SnackSerializer.top_five_user_snacks(Snack.users_top_rated_snacks(user), user.id)
+    if params.include?(:limit)
+      render json: SnackSerializer.top_five_user_snacks(Snack.users_top_rated_snacks(user, params[:limit]), user.id)
+    else
+      render json: SnackSerializer.top_five_user_snacks(Snack.users_top_rated_snacks(user), user.id)
+    end
   end
 end
