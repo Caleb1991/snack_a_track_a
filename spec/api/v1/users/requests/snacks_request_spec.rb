@@ -45,21 +45,21 @@ RSpec.describe 'User Snack API' do
     end
   end
 
-  describe '#top_five' do
+  describe '#top_rated_snacks' do
     it 'returns users top five highest rated snacks' do
-      get "/api/v1/users/#{@user_1.id}/snacks/top_five"
+      get "/api/v1/users/#{@user_1.id}/snacks/top_rated_snacks"
 
       expect(response).to be_successful
 
       highest_rated_snacks = JSON.parse(response.body, symbolize_names: true)
 
       expect(highest_rated_snacks[:data][:attributes][:snacks].count).to eq(5)
-      expect(highest_rated_snacks[:data][:attributes][:snacks][0][:rating]).to eq(5.0)
-      expect(highest_rated_snacks[:data][:attributes][:snacks][4][:rating]).to eq(4.6)
+      expect(highest_rated_snacks[:data][:attributes][:snacks][0][:name]).to eq('Cheetos')
+      expect(highest_rated_snacks[:data][:attributes][:snacks][4][:name]).to eq('Funyuns')
     end
 
     it 'returns an error is user cant be found' do
-      get '/api/v1/users/9238328/snacks/top_five'
+      get '/api/v1/users/9238328/snacks/top_rated_snacks'
 
       expect(response).to_not be_successful
 

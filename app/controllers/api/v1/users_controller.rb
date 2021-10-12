@@ -42,7 +42,7 @@ class Api::V1::UsersController < ApplicationController
       return render json: UserSerializer.no_user_found, status: 404
     end
 
-    user.delete
+    user.destroy
     render json: UserSerializer.deleted_user
   end
 

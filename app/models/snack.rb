@@ -3,7 +3,7 @@ class Snack < ApplicationRecord
   validates :savory, :sweet, inclusion: [true, false]
   has_many :users_snacks, dependent: :destroy
   has_many :users, through: :users_snacks
-  has_many :reviews, through: :users_snacks, dependent: :destroy
+  has_many :reviews, through: :users_snacks
 
   def average_rating
     reviews.average(:rating).to_f
