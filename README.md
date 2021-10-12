@@ -1,5 +1,8 @@
-# Snack-a-Track-a
+# Snack-a-Track-a V 1.0
 Snack-a-Track-a is an API created to help track all of the snacks a user consumes. A user may add snacks they have eaten, recieve recommendations for snacks, as well as rate snacks.
+
+## Domain
+https://lit-reaches-91268.herokuapp.com/
 
 ## Schema
 
