@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         end
 
       end
-      get '/snacks/average_rating'
+      get '/snacks/:snack_id/average_rating', to: '/api/v1/snacks#average_rating'
       resources :snacks
       resources :users_snacks, only: [:create, :destroy]
       resources :reviews, only: [:create, :update, :destroy]

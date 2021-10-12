@@ -45,6 +45,16 @@ class Api::V1::SnacksController < ApplicationController
     render json: SnackSerializer.deleted_snack
   end
 
+  def average_rating
+    begin
+      snack = Snack.find(params[:snack_id])
+    rescue ActiveRecord::RecordNotFound
+      return render json: SnackSerializer.snack_not_found, status: 400
+    end
+
+    render json: SnackSerializer.average_rating(snack.average_rating, snack.id)
+  end
+
   private
   def snack_attributes
     JSON.parse(request.body.read, symbolize_names: true)

@@ -110,4 +110,17 @@ class SnackSerializer
       }
     }
   end
+
+  def self.average_rating(rating, snack_id)
+    {data:
+      {
+        id: snack_id,
+        type: 'Snack',
+        attributes:
+        {
+          average_rating: rating
+        }
+      }
+    }
+  end
 end

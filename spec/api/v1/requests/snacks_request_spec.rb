@@ -144,7 +144,7 @@ RSpec.describe 'Snack API' do
 
   describe '#average_rating' do
     it 'returns the average rating of a given snack' do
-      get '/api/v1/snacks/average_rating'
+      get "/api/v1/snacks/#{@snack_1.id}/average_rating"
 
       expect(response).to be_successful
 
