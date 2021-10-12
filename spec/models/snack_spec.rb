@@ -17,6 +17,7 @@ RSpec.describe Snack do
     @users_snack_4 = UsersSnack.create!(user_id: @user_1.id, snack_id: @snack_4.id)
     @users_snack_5 = UsersSnack.create!(user_id: @user_1.id, snack_id: @snack_5.id)
     @users_snack_6 = UsersSnack.create!(user_id: @user_2.id, snack_id: @snack_5.id)
+    @users_snack_7 = UsersSnack.create!(user_id: @user_2.id, snack_id: @snack_1.id)
 
     @review_1 = @users_snack_1.reviews.create!(description: 'What a fun way to eat onions, I couldnt believe it when they said they were raw', rating: 4.6)
     @review_2 = @users_snack_2.reviews.create!(description: 'Out of this world.', rating: 4.7)
@@ -24,6 +25,7 @@ RSpec.describe Snack do
     @review_4 = @users_snack_4.reviews.create!(description: 'Best paired with a Mountain Dew', rating: 4.9)
     @review_5 = @users_snack_5.reviews.create!(description: 'Again, the one with the cheetah', rating: 5.0)
     @review_6 = @users_snack_6.reviews.create!(description: 'They werent that hot', rating: 1.0)
+    @review_7 = @users_snack_7.reviews.create!(description: 'They werent that hot', rating: 5.0)
   end
 
   describe 'validations' do
@@ -39,7 +41,7 @@ RSpec.describe Snack do
 
   describe '#average_rating' do
     it 'returns the average rating based on all reviews for a given snack' do
-      expect(@snack_1.average_rating).to eq(4.6)
+      expect(@snack_1.average_rating).to eq(4.8)
     end
   end
 
@@ -48,6 +50,14 @@ RSpec.describe Snack do
       snacks = [@snack_5, @snack_4, @snack_3, @snack_2, @snack_1]
 
       expect(Snack.users_top_rated_snacks(@user_1)).to eq(snacks)
+    end
+  end
+
+  describe '#top_rated_snacks_overall' do
+    it 'returns the top rated snacks in descending order with default limit of five' do
+      snacks = [@snack_5, @snack_4, @snack_1, @snack_3, @snack_2]
+
+      expect(Snack.top_rated_snacks_overall).to eq(snacks)
     end
   end
 end
