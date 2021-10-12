@@ -29,7 +29,7 @@ RSpec.describe 'Snack API' do
     @review_5 = @users_snack_5.reviews.create!(description: 'Again, the one with the cheetah.', rating: 5.0)
     @review_6 = @users_snack_6.reviews.create!(description: 'Again, the one with the cheetah.', rating: 1.0)
     @review_7 = @users_snack_7.reviews.create!(description: 'Again, the one with the cheetah.', rating: 0.5)
-    @review_8 = @users_snack_8.reviews.create!(description: 'What a fun way to eat onions, I couldnt believe it when they said they were raw', rating: 5.0)
+    @review_8 = @users_snack_8.reviews.create!(description: 'What a fun way to eat onions, I couldnt believe it when they said they were raw', rating: 1.0)
     end
 
   describe '#create' do
@@ -169,22 +169,33 @@ RSpec.describe 'Snack API' do
 
       average_rating = JSON.parse(response.body, symbolize_names: true)
 
-      expect(average_rating[:data][:attributes][:average_rating]).to eq(4.8)
+      expect(average_rating[:data][:attributes][:average_rating]).to eq(2.8)
     end
   end
 
-  describe '#top_rated-snacks_overall' do
+  describe '#top_rated_snacks_overall' do
     it 'returns the top rated snacks with a default limit of 5' do
       get '/api/v1/snacks/top_rated_snacks_overall'
 
       expect(response).to be_successful
 
-      snacks = [@snack_1, @snack_2, @snack_3, @snack_4, @snack_5]
-
-      top_rated = JSON.prase(response.body, symbolize_names: true)
+      top_rated = JSON.parse(response.body, symbolize_names: true)
 
       expect(top_rated[:data][:attributes][:top_rated_snacks].count).to eq(5)
-      expect(top_rated[:data][:attributes][:top_rated_snacks]).to eq(snacks)
+      expect(top_rated[:data][:attributes][:top_rated_snacks][0][:name]).to eq('Cheetos')
+      expect(top_rated[:data][:attributes][:top_rated_snacks][4][:name]).to eq('Funyuns')
+    end
+
+    it 'can accept a limit' do
+      get '/api/v1/snacks/top_rated_snacks_overall?limit=7'
+
+      expect(response).to be_successful
+
+      top_rated = JSON.parse(response.body, symbolize_names: true)
+
+      expect(top_rated[:data][:attributes][:top_rated_snacks].count).to eq(7)
+      expect(top_rated[:data][:attributes][:top_rated_snacks][0][:name]).to eq('Cheetos')
+      expect(top_rated[:data][:attributes][:top_rated_snacks][4][:name]).to eq('Funyuns')
     end
   end
 end
