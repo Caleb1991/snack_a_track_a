@@ -60,4 +60,12 @@ RSpec.describe Snack do
       expect(Snack.top_rated_snacks_overall).to eq(snacks)
     end
   end
+
+  describe '#top_rated_savory_snacks' do
+    it 'returns the top rated savory snacks overall in descending order with default limit of 5' do
+      snacks = [@snack_4, @snack_1, @snack_5]
+
+      expect(Snack.top_rated_savory_snacks).to eq(snacks)
+    end
+  end
 end
