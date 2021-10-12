@@ -73,7 +73,7 @@ RSpec.describe 'User Snack API' do
 
       expect(highest_rated_snacks[:data][:attributes][:snacks].count).to eq(7)
       expect(highest_rated_snacks[:data][:attributes][:snacks][0][:name]).to eq('Cheetos')
-      expect(highest_rated_snacks[:data][:attributes][:snacks][6][:name]).to eq('Funyuns')
+      expect(highest_rated_snacks[:data][:attributes][:snacks][6][:name]).to eq('Hot Dogs')
     end
 
     it 'returns an error is user cant be found' do
