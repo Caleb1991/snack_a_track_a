@@ -19,7 +19,7 @@ RSpec.describe Snack do
     @users_snack_6 = UsersSnack.create!(user_id: @user_2.id, snack_id: @snack_5.id)
 
     @review_1 = @users_snack_1.reviews.create!(description: 'What a fun way to eat onions, I couldnt believe it when they said they were raw', rating: 4.6)
-    @review_2 = @users_snack_2.reviews.create!(description: 'Out of this wordl.', rating: 4.7)
+    @review_2 = @users_snack_2.reviews.create!(description: 'Out of this world.', rating: 4.7)
     @review_3 = @users_snack_3.reviews.create!(description: 'The only way I can think to save the bees', rating: 4.8)
     @review_4 = @users_snack_4.reviews.create!(description: 'Best paired with a Mountain Dew', rating: 4.9)
     @review_5 = @users_snack_5.reviews.create!(description: 'Again, the one with the cheetah', rating: 5.0)

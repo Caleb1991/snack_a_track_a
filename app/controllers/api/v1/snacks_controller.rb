@@ -12,7 +12,7 @@ class Api::V1::SnacksController < ApplicationController
 
     render json: SnackSerializer.single_snack(snack)
   end
-  
+
   def create
     snack = Snack.create(snack_attributes)
 
@@ -41,7 +41,7 @@ class Api::V1::SnacksController < ApplicationController
       return render json: SnackSerializer.snack_not_found, status: 400
     end
 
-    snack.delete
+    snack.destroy
     render json: SnackSerializer.deleted_snack
   end
 

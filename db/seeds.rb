@@ -12,6 +12,8 @@ snack_3 = Snack.create!(name: 'Honey Bun', description: 'Honey and Bun-y', savor
 snack_4 = Snack.create!(name: 'Doritos', description: 'Bold', savory: true, sweet: false)
 snack_5 = Snack.create!(name: 'Cheetos', description: 'The one with the cheetah', savory: true, sweet: false)
 snack_6 = Snack.create!(name: 'Mountain Dew', description: 'Climb the mountain', savory: false, sweet: true)
+snack_7 = Snack.create!(name: 'Milky Way', description: 'Taste of the galaxy', savory: false, sweet: true)
+snack_8 = Snack.create!(name: 'Snickers', description: 'Not trademarked', savory: false, sweet: true)
 
 users_snack_1 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_1.id)
 users_snack_2 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_2.id)
@@ -21,6 +23,9 @@ users_snack_5 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_5.id)
 users_snack_6 = UsersSnack.create!(user_id: user_2.id, snack_id: snack_1.id)
 users_snack_7 = UsersSnack.create!(user_id: user_2.id, snack_id: snack_2.id)
 users_snack_8 = UsersSnack.create!(user_id: user_2.id, snack_id: snack_3.id)
+users_snack_9 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_7.id)
+users_snack_10 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_7.id)
+users_snack_11 = UsersSnack.create!(user_id: user_1.id, snack_id: snack_8.id)
 
 review_1 = users_snack_1.reviews.create!(description: 'What a fun way to eat onions, I couldnt believe it when they said they were raw.', rating: 4.6)
 review_2 = users_snack_2.reviews.create!(description: 'Out of this world.', rating: 4.7)

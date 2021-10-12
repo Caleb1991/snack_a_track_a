@@ -27,7 +27,7 @@ class Api::V1::ReviewsController < ApplicationController
       return render json: ReviewSerializer.review_not_found, status: 409
     end
 
-    review.delete
+    review.destroy
     render json: ReviewSerializer.review_deleted
   end
 

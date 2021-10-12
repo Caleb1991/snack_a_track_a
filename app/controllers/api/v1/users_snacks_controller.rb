@@ -16,7 +16,7 @@ class Api::V1::UsersSnacksController < ApplicationController
       return render json: UsersSnackSerializer.users_snack_not_found, status: 400
     end
 
-    users_snack.delete
+    users_snack.destroy
     render json: UsersSnackSerializer.succesfully_deleted
   end
 
