@@ -25,8 +25,8 @@ RSpec.describe 'User Snack API' do
     @review_3 = @users_snack_3.reviews.create!(description: 'The only way I can think to save the bees.', rating: 4.8)
     @review_4 = @users_snack_4.reviews.create!(description: 'Best paired with a Mountain Dew.', rating: 4.9)
     @review_5 = @users_snack_5.reviews.create!(description: 'Again, the one with the cheetah.', rating: 5.0)
-    @review_5 = @users_snack_6.reviews.create!(description: 'Again, the one with the cheetah.', rating: 1.0)
-    @review_5 = @users_snack_7.reviews.create!(description: 'Again, the one with the cheetah.', rating: 0.5)
+    @review_6 = @users_snack_6.reviews.create!(description: 'Again, the one with the cheetah.', rating: 1.0)
+    @review_7 = @users_snack_7.reviews.create!(description: 'Again, the one with the cheetah.', rating: 0.5)
   end
 
   describe '#index' do
@@ -51,7 +51,7 @@ RSpec.describe 'User Snack API' do
     end
   end
 
-  describe '#top_rated_snacks' do
+  describe '#users_top_rated_snacks' do
     it 'returns users top five highest rated snacks' do
       get "/api/v1/users/#{@user_1.id}/snacks/top_rated_snacks"
 
