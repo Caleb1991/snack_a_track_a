@@ -55,6 +55,14 @@ class Api::V1::SnacksController < ApplicationController
     render json: SnackSerializer.average_rating(snack.average_rating, snack.id)
   end
 
+  def top_rated_snacks_overall
+    if params.include?(:limit)
+      render json: SnackSerializer.top_snacks(Snack.top_rated_snacks_overall(params[:limit]))
+    else
+      render json: SnackSerializer.top_snacks(Snack.top_rated_snacks_overall)
+    end
+  end
+
   private
   def snack_attributes
     JSON.parse(request.body.read, symbolize_names: true)

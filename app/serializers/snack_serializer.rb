@@ -123,4 +123,17 @@ class SnackSerializer
       }
     }
   end
+
+  def self.top_snacks(snacks)
+    {data:
+      {
+        id: nil,
+        type: 'Snack',
+        attributes:
+        {
+          top_rated_snacks: snacks
+        }
+      }
+    }
+  end
 end
