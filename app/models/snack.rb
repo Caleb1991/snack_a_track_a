@@ -23,4 +23,13 @@ class Snack < ApplicationRecord
     .order(average_rating: :desc)
     .limit(limit)
   end
+
+  def self.top_rated_savory_snacks(limit = 5)
+    joins(:reviews)
+    .where(savory: :true)
+    .select('snacks.*, AVG(reviews.rating) AS average_rating')
+    .group('snacks.id')
+    .order(average_rating: :desc)
+    .limit(limit)
+  end
 end
