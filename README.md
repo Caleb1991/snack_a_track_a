@@ -52,3 +52,20 @@ get `/api/v1/snacks/top_rated_savory_or_sweet_snacks` </br>
   -Returns either the top rated savory or sweet snacks </br>
   -Must send `?taste=x` (savory or sweet) as query parameters </br>
   -Can send `?limit=x` as query parameters (defaults to 5)
+  
+## UsersSnacks
+**post** `/api/v1/users_snacks` </br>
+  -Creates an association between a user and a snack (must send parameters as a JSON payload)
+  
+**delete** `/api/v1/users_snacks/:id` </br>
+  -Deletes a given association between a user and a snack
+  
+## Reviews
+**post** `/api/v1/reviews` </br>
+  -Creates a review for a based off of a users_snack (must send parameters as a JSON payload)
+  
+**patch** `/api/v1/reviews/:id` </br>
+  -Updates a given review (must send parameters as a JSON payload)
+  
+**delete** `/api/v1/reviews/:id` </br>
+  -Deletes a given review
