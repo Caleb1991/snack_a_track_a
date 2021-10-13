@@ -246,4 +246,37 @@ RSpec.describe 'Snack API' do
       expect(savory_snacks[:data][:attributes][:snacks][6][:name]).to eq('Hot Dogs')
     end
   end
+
+  describe '#all_savory_or_sweet_snacks' do
+    it 'returns all savory snacks' do
+      get '/api/v1/snacks/all_savory_or_sweet_snacks?taste=savory'
+
+      expect(response).to be_successful
+
+      savory_snacks = JSON.parse(response.body, symbolize_names: true)
+
+      expect(savory_snacks[:data][:attributes][:snacks][0][:name]).to eq('Funyuns')
+    end
+
+
+    it 'returns all sweet snacks' do
+      get '/api/v1/snacks/all_savory_or_sweet_snacks?taste=sweet'
+
+      expect(response).to be_successful
+
+      sweet_snacks = JSON.parse(response.body, symbolize_names: true)
+
+      expect(savory_snacks[:data][:attributes][:snacks][0][:name]).to eq('Honey Bun')
+    end
+
+    it 'accepts a limit' do
+      get '/api/v1/snacks/all_savory_or_sweet_snacks?taste=savory&&limit=7'
+
+      expect(response).to be_successful
+
+      savory_snacks = JSON.parse(response.body, symbolize_names: true)
+
+      expect(savory_snacks[:data][:attributes][:snacks][6][:name]).to eq('Hot Dogs')
+    end
+  end
 end
