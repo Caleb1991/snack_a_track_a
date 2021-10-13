@@ -41,6 +41,22 @@ RSpec.describe 'Reviews API' do
 
       expect(errors[:data][:attributes][:errors]).to eq(["Description can't be blank", "Users snack can't be blank", "Users snack must exist"])
     end
+
+    it 'sets #like to true if rating is >= 2.7' do
+      review_payload = {
+        description: 'Out of this world',
+        rating: 3.3,
+        users_snack_id: @users_snack_2.id
+      }
+
+      post '/api/v1/reviews', params: review_payload, as: :json
+
+      expect(response).to be_successful
+
+      new_review = JSON.parse(response.body, symbolize_names: true)
+
+      expect(new_review[:data][:attributes][:like?]).to eq(true)
+    end
   end
 
   describe '#update' do
