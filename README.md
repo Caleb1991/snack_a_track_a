@@ -47,8 +47,13 @@ https://lit-reaches-91268.herokuapp.com/
 **get** `/api/v1/snacks/top_rated_snacks_overall` </br>
   -Returns top rated snacks overall </br>
   -Can send `?limit=x` as query paramters (defaults to 5)
+  
+**get** `/api/v1/snacks/all_savory_or_sweet_snacks` </br>
+  -Returns either all Savory snacks or all sweet snacks </br>
+  -Must send `?taste=x` (savory or sweet) as query parameters </br>
+  -Can send `?limit=x` as query parameters (defaults to 5)
 
-get `/api/v1/snacks/top_rated_savory_or_sweet_snacks` </br>
+**get** `/api/v1/snacks/top_rated_savory_or_sweet_snacks` </br>
   -Returns either the top rated savory or sweet snacks </br>
   -Must send `?taste=x` (savory or sweet) as query parameters </br>
   -Can send `?limit=x` as query parameters (defaults to 5)
