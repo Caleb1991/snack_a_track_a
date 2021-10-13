@@ -40,6 +40,11 @@ https://lit-reaches-91268.herokuapp.com/
 **delete** `/api/v1/snacks/:id` </br>
   -Deletes a given snack
   
+**get** `/api/v1/snacks/all_savory_or_sweet_snacks` </br>
+  -Returns either all Savory snacks or all sweet snacks </br>
+  -Must send `?taste=x` (savory or sweet) as query parameters </br>
+  -Can send `?limit=x` as query parameters (defaults to 5)
+  
 **get** `/api/v1/snacks/:snack_id/average_rating` </br>
   -Returns the average rating for a given snack </br>
   -Can send `?limit=x` as query parameters (defaults to 5)
@@ -47,11 +52,6 @@ https://lit-reaches-91268.herokuapp.com/
 **get** `/api/v1/snacks/top_rated_snacks_overall` </br>
   -Returns top rated snacks overall </br>
   -Can send `?limit=x` as query paramters (defaults to 5)
-  
-**get** `/api/v1/snacks/all_savory_or_sweet_snacks` </br>
-  -Returns either all Savory snacks or all sweet snacks </br>
-  -Must send `?taste=x` (savory or sweet) as query parameters </br>
-  -Can send `?limit=x` as query parameters (defaults to 5)
 
 **get** `/api/v1/snacks/top_rated_savory_or_sweet_snacks` </br>
   -Returns either the top rated savory or sweet snacks </br>
