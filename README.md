@@ -12,43 +12,43 @@ https://lit-reaches-91268.herokuapp.com/
 get `/api/v1/users` </br>
   -Returns all users
 
-get `/api/v1/users/:id`
-  Returns user for given ID
+get `/api/v1/users/:id` </br>
+  -Returns user for given ID
   
-post `/api/v1/users`
-  Creates a user (must send parameters as a JSON payload)
+post `/api/v1/users` </br>
+  -Creates a user (must send parameters as a JSON payload)
   
-patch `/api/v1/users/:id`
-  Updates a given user (must send parameters as a JSON payload)
+patch `/api/v1/users/:id` </br>
+  -Updates a given user (must send parameters as a JSON payload)
   
-delete `/api/v1/users/:id`
-  Deletes a given user
+delete `/api/v1/users/:id` </br>
+  -Deletes a given user
   
 ## Snacks
-get `/api/v1/snacks`
-  Returns all snacks
+get `/api/v1/snacks` </br>
+  -Returns all snacks
   
-get `/api/v1/snacks/:id`
-  Returns snack for given ID
+get `/api/v1/snacks/:id` </br>
+  -Returns snack for given ID
 
-post `/api/v1/snacks`
-  Creates a snack (params must be sent as a JSON payload)
+post `/api/v1/snacks` </br>
+  -Creates a snack (params must be sent as a JSON payload)
   
-patch `/api/v1/snacks/:id`
-  Updates a given snack (must send parameters as a json payload)
+patch `/api/v1/snacks/:id` </br>
+  -Updates a given snack (must send parameters as a json payload)
   
-delete `/api/v1/snacks/:id`
-  Deletes a given snack
+delete `/api/v1/snacks/:id` </br>
+  -Deletes a given snack
   
-get `/api/v1/snacks/:snack_id/average_rating`
-  Returns the average rating for a given snack
-  Can send `?limit=x` as query parameters (defaults to 5)
+get `/api/v1/snacks/:snack_id/average_rating` </br>
+  -Returns the average rating for a given snack </br>
+  -Can send `?limit=x` as query parameters (defaults to 5)
 
-get `/api/v1/snacks/top_rated_snacks_overall`
-  Returns top rated snacks overall
-  Can send `?limit=x` as query paramters (defaults to 5)
+get `/api/v1/snacks/top_rated_snacks_overall` </br>
+  -Returns top rated snacks overall </br>
+  -Can send `?limit=x` as query paramters (defaults to 5)
 
-get `/api/v1/snacks/top_rated_savory_or_sweet_snacks`
-  Returns either the top rated savory or sweet snacks
-  Must send `?taste=x` (savory or sweet) as query parameters
-  Can send `?limit=x` as query parameters (defaults to 5)
+get `/api/v1/snacks/top_rated_savory_or_sweet_snacks` </br>
+  -Returns either the top rated savory or sweet snacks </br>
+  -Must send `?taste=x` (savory or sweet) as query parameters </br>
+  -Can send `?limit=x` as query parameters (defaults to 5)
