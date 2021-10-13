@@ -149,4 +149,17 @@ class SnackSerializer
       }
     }
   end
+
+  def self.all_savory_or_sweet(snacks)
+    {data:
+      {
+        id: nil,
+        type: 'Snack',
+        attributes:
+        {
+          snacks: snacks
+        }
+      }
+    }
+  end
 end

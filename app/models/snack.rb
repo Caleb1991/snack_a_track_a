@@ -32,4 +32,9 @@ class Snack < ApplicationRecord
     .order(average_rating: :desc)
     .limit(limit)
   end
+
+  def self.savory_or_sweet_snacks(taste, limit = 5)
+    all
+    .where(taste => true)
+  end
 end
