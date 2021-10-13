@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_10_10_134216) do
   create_table "reviews", force: :cascade do |t|
     t.string "description"
     t.float "rating"
+    t.boolean "likes", default: false
     t.bigint "users_snack_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

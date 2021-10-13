@@ -55,7 +55,23 @@ RSpec.describe 'Reviews API' do
 
       new_review = JSON.parse(response.body, symbolize_names: true)
 
-      expect(new_review[:data][:attributes][:like?]).to eq(true)
+      expect(new_review[:data][:attributes][:likes]).to eq(true)
+    end
+
+    it '#like remains false if rating is <= 2.6' do
+      review_payload = {
+        description: 'Out of this world',
+        rating: 2.6,
+        users_snack_id: @users_snack_2.id
+      }
+
+      post '/api/v1/reviews', params: review_payload, as: :json
+
+      expect(response).to be_successful
+
+      new_review = JSON.parse(response.body, symbolize_names: true)
+
+      expect(new_review[:data][:attributes][:likes]).to eq(false)
     end
   end
 

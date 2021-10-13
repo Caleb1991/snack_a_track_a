@@ -2,6 +2,10 @@ class Api::V1::ReviewsController < ApplicationController
   def create
     review = Review.create(review_attributes)
 
+    if review[:rating] >= 2.7
+      review.update(likes: true)
+    end
+
     if review.save
       render json: ReviewSerializer.new_review(review)
     else
