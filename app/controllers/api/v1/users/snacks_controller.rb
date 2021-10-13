@@ -9,7 +9,7 @@ class Api::V1::Users::SnacksController < ApplicationController
     render json: SnackSerializer.all_users_snacks(user)
   end
 
-  def top_rated_snacks
+  def users_top_rated_snacks
     begin
       user = User.find(params[:user_id])
     rescue ActiveRecord::RecordNotFound
