@@ -69,3 +69,11 @@ get `/api/v1/snacks/top_rated_savory_or_sweet_snacks` </br>
   
 **delete** `/api/v1/reviews/:id` </br>
   -Deletes a given review
+
+## User::Snacks
+**get** `/api/v1/users/:user_id/snacks` </br>
+  -Returns all snacks for a given user
+  
+**get** `/api/v1/users/:user_id/top_rated_snacks` </br>
+  -Returns the snacks a user has rated the highest </br>
+  -Can send `?limit=x` as query parameters (defaults to 5)
