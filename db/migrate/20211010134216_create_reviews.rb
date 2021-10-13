@@ -3,6 +3,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
     create_table :reviews do |t|
       t.string :description
       t.float :rating
+      t.boolean :likes, default: false
       t.references :users_snack, foreign_key: true
       t.timestamps
     end
