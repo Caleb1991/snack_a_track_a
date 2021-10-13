@@ -49,5 +49,15 @@ RSpec.describe 'snacks Reviews API' do
       expect(reviews[:data][:attributes][:reviews].count).to eq(2)
       expect(reviews[:data][:attributes][:reviews][0][:rating]).to eq(4.6)
     end
+
+    it 'returns an error if snack does not exist' do
+      get '/api/v1/snacks/12134141/reviews'
+
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message[:data][:attributes][:message]).to eq('Snack not found for given id.')
+    end
   end
 end
