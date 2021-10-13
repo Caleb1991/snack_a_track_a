@@ -71,6 +71,14 @@ class Api::V1::SnacksController < ApplicationController
     end
   end
 
+  def all_savory_or_sweet_snacks
+    if params.include?(:limit)
+      render json: SnackSerializer.all_savory_or_sweet(Snack.savory_or_sweet_snacks(params[:taste], params[:limit]))
+    else
+      render json: SnackSerializer.all_savory_or_sweet(Snack.savory_or_sweet_snacks(params[:taste]))
+    end
+  end
+
   private
   def snack_attributes
     JSON.parse(request.body.read, symbolize_names: true)

@@ -74,4 +74,14 @@ RSpec.describe Snack do
       expect(Snack.top_rated_savory_or_sweet_snacks('sweet')).to eq(snacks)
     end
   end
+
+  describe '#savory_or_sweet' do
+    it 'returns all savory snacks' do
+      expect(Snack.savory_or_sweet_snacks('savory').first.name).to eq('Funyuns')
+    end
+
+    it 'returns all sweet snacks' do
+      expect(Snack.savory_or_sweet_snacks('sweet').first.name).to eq('Star Crunch')
+    end
+  end
 end

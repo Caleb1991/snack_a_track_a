@@ -266,7 +266,7 @@ RSpec.describe 'Snack API' do
 
       sweet_snacks = JSON.parse(response.body, symbolize_names: true)
 
-      expect(savory_snacks[:data][:attributes][:snacks][0][:name]).to eq('Honey Bun')
+      expect(sweet_snacks[:data][:attributes][:snacks][0][:name]).to eq('Star Crunch')
     end
 
     it 'accepts a limit' do
@@ -276,7 +276,7 @@ RSpec.describe 'Snack API' do
 
       savory_snacks = JSON.parse(response.body, symbolize_names: true)
 
-      expect(savory_snacks[:data][:attributes][:snacks][6][:name]).to eq('Hot Dogs')
+      expect(savory_snacks[:data][:attributes][:snacks][6][:name]).to eq('Popcorn')
     end
   end
 end
