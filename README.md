@@ -10,7 +10,7 @@ https://lit-reaches-91268.herokuapp.com/
 
 ## Users
 get `/api/v1/users` </br>
-  Returns all users
+  -Returns all users
 
 get `/api/v1/users/:id`
   Returns user for given ID
