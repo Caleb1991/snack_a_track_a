@@ -9,7 +9,7 @@ Snack-a-Track-a is an API created to help track all of the snacks a user consume
 https://lit-reaches-91268.herokuapp.com/
 
 ## Users
-get `/api/v1/users`
+get `/api/v1/users` </br>
   Returns all users
 
 get `/api/v1/users/:id`
