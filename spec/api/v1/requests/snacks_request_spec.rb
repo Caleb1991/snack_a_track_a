@@ -177,6 +177,16 @@ RSpec.describe 'Snack API' do
 
       expect(average_rating[:data][:attributes][:average_rating]).to eq(2.8)
     end
+
+    it 'returns an error if snack does not exist' do
+      get '/api/v1/snacks/12134141/average_rating'
+
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message[:data][:attributes][:message]).to eq('Snack not found for given id.')
+    end
   end
 
   describe '#top_rated_snacks_overall' do
