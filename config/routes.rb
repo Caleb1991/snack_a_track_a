@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users do
-        get '/snacks/top_rated_snacks', to: '/api/v1/users/snacks#top_rated_snacks'
+        get '/snacks/users_top_rated_snacks', to: '/api/v1/users/snacks#users_top_rated_snacks'
         resources :snacks, only: :index, to: '/api/v1/users/snacks#index' do
         end
 

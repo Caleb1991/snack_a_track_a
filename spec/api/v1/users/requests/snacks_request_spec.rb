@@ -53,7 +53,7 @@ RSpec.describe 'User Snack API' do
 
   describe '#users_top_rated_snacks' do
     it 'returns users top five highest rated snacks' do
-      get "/api/v1/users/#{@user_1.id}/snacks/top_rated_snacks"
+      get "/api/v1/users/#{@user_1.id}/snacks/users_top_rated_snacks"
 
       expect(response).to be_successful
 
@@ -65,7 +65,7 @@ RSpec.describe 'User Snack API' do
     end
 
     it 'can accept a limit amount' do
-      get "/api/v1/users/#{@user_1.id}/snacks/top_rated_snacks?limit=7"
+      get "/api/v1/users/#{@user_1.id}/snacks/users_top_rated_snacks?limit=7"
 
       expect(response).to be_successful
 
@@ -77,7 +77,7 @@ RSpec.describe 'User Snack API' do
     end
 
     it 'returns an error is user cant be found' do
-      get '/api/v1/users/9238328/snacks/top_rated_snacks'
+      get '/api/v1/users/9238328/snacks/users_top_rated_snacks'
 
       expect(response).to_not be_successful
 
