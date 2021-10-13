@@ -60,4 +60,17 @@ class ReviewSerializer
       }
     }
   end
+
+  def self.all_reviews_for_snack(snack)
+    {data:
+      {
+        id: nil,
+        type: 'Reviews',
+        attributes:
+        {
+          reviews: snack.reviews
+        }
+      }
+    }
+  end
 end
