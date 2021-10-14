@@ -90,4 +90,17 @@ class UserSerializer
       }
     }
   end
+
+  def self.snack_recs(user_id, snacks)
+    {data:
+      {
+        id: user_id,
+        type: 'User',
+        attributes:
+        {
+          snacks: snacks
+        }
+      }
+    }
+  end
 end
