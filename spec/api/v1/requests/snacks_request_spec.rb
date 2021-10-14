@@ -14,6 +14,8 @@ RSpec.describe 'Snack API' do
     @snack_7 = Snack.create!(name: 'Hot Dogs', description: 'Also not impressive', savory: true, sweet: false)
     @snack_8 = Snack.create!(name: 'Sun Chips', description: 'Sunny', savory: true, sweet: false)
     @snack_9 = Snack.create!(name: 'Popcorn', description: 'Poppable', savory: true, sweet: false)
+    @snack_10 = Snack.create!(name: 'Cauliflower', description: 'Delicious', savory: true, sweet: false)
+    @snack_11 = Snack.create!(name: 'Broccoli', description: 'Like Trees', savory: true, sweet: false)
 
     @users_snack_1 = UsersSnack.create!(user_id: @user_1.id, snack_id: @snack_1.id)
     @users_snack_2 = UsersSnack.create!(user_id: @user_1.id, snack_id: @snack_2.id)
@@ -25,17 +27,21 @@ RSpec.describe 'Snack API' do
     @users_snack_8 = UsersSnack.create!(user_id: @user_2.id, snack_id: @snack_1.id)
     @users_snack_9 = UsersSnack.create!(user_id: @user_1.id, snack_id: @snack_8.id)
     @users_snack_10 = UsersSnack.create!(user_id: @user_1.id, snack_id: @snack_9.id)
+    @users_snack_11 = UsersSnack.create!(user_id: @user_2.id, snack_id: @snack_10.id)
+    @users_snack_12 = UsersSnack.create!(user_id: @user_2.id, snack_id: @snack_11.id)
 
-    @review_1 = @users_snack_1.reviews.create!(description: 'What a fun way to eat onions, I couldnt believe it when they said they were raw', rating: 4.6)
-    @review_2 = @users_snack_2.reviews.create!(description: 'Out of this world.', rating: 4.7)
-    @review_3 = @users_snack_3.reviews.create!(description: 'The only way I can think to save the bees.', rating: 4.8)
-    @review_4 = @users_snack_4.reviews.create!(description: 'Best paired with a Mountain Dew.', rating: 4.9)
-    @review_5 = @users_snack_5.reviews.create!(description: 'Again, the one with the cheetah.', rating: 5.0)
-    @review_6 = @users_snack_6.reviews.create!(description: 'Again, the one with the cheetah.', rating: 1.0)
-    @review_7 = @users_snack_7.reviews.create!(description: 'Again, the one with the cheetah.', rating: 0.5)
-    @review_8 = @users_snack_8.reviews.create!(description: 'What a fun way to eat onions, I couldnt believe it when they said they were raw', rating: 1.0)
-    @review_9 = @users_snack_9.reviews.create!(description: 'Radical', rating: 0.9)
-    @review_10 = @users_snack_10.reviews.create!(description: 'Amazing', rating: 0.8)
+    @review_1 = @users_snack_1.reviews.create!(description: 'What a fun way to eat onions, I couldnt believe it when they said they were raw', rating: 4.6, likes: true)
+    @review_2 = @users_snack_2.reviews.create!(description: 'Out of this world.', rating: 4.7, likes: true)
+    @review_3 = @users_snack_3.reviews.create!(description: 'The only way I can think to save the bees.', rating: 4.8, likes: true)
+    @review_4 = @users_snack_4.reviews.create!(description: 'Best paired with a Mountain Dew.', rating: 4.9, likes: true)
+    @review_5 = @users_snack_5.reviews.create!(description: 'Again, the one with the cheetah.', rating: 5.0, likes: true)
+    @review_6 = @users_snack_6.reviews.create!(description: 'Again, the one with the cheetah.', rating: 1.0, likes: false)
+    @review_7 = @users_snack_7.reviews.create!(description: 'Again, the one with the cheetah.', rating: 0.5, likes: false)
+    @review_8 = @users_snack_8.reviews.create!(description: 'What a fun way to eat onions, I couldnt believe it when they said they were raw', rating: 1.0, likes: false)
+    @review_9 = @users_snack_9.reviews.create!(description: 'Radical', rating: 0.9, likes: false)
+    @review_10 = @users_snack_10.reviews.create!(description: 'Amazing', rating: 0.8, likes: false)
+    @review_11 = @users_snack_11.reviews.create!(description: 'Amazing', rating: 4.0, likes: true)
+    @review_12 = @users_snack_12.reviews.create!(description: 'Amazing', rating: 2.9, likes: true)
     end
 
   describe '#create' do
@@ -47,12 +53,12 @@ RSpec.describe 'Snack API' do
         sweet: false
       }
 
-      expect(Snack.all.count).to eq(9)
+      expect(Snack.all.count).to eq(11)
 
       post '/api/v1/snacks', params: snack_payload, as: :json
 
       expect(response).to be_successful
-      expect(Snack.all.count).to eq(10)
+      expect(Snack.all.count).to eq(12)
 
       created_snack = JSON.parse(response.body, symbolize_names: true)
 
@@ -199,7 +205,7 @@ RSpec.describe 'Snack API' do
 
       expect(top_rated[:data][:attributes][:top_rated_snacks].count).to eq(5)
       expect(top_rated[:data][:attributes][:top_rated_snacks][0][:name]).to eq('Cheetos')
-      expect(top_rated[:data][:attributes][:top_rated_snacks][4][:name]).to eq('Funyuns')
+      expect(top_rated[:data][:attributes][:top_rated_snacks][4][:name]).to eq('Cauliflower')
     end
 
     it 'can accept a limit' do
@@ -211,7 +217,7 @@ RSpec.describe 'Snack API' do
 
       expect(top_rated[:data][:attributes][:top_rated_snacks].count).to eq(7)
       expect(top_rated[:data][:attributes][:top_rated_snacks][0][:name]).to eq('Cheetos')
-      expect(top_rated[:data][:attributes][:top_rated_snacks][4][:name]).to eq('Funyuns')
+      expect(top_rated[:data][:attributes][:top_rated_snacks][6][:name]).to eq('Funyuns')
     end
   end
 
@@ -243,7 +249,7 @@ RSpec.describe 'Snack API' do
 
       savory_snacks = JSON.parse(response.body, symbolize_names: true)
 
-      expect(savory_snacks[:data][:attributes][:snacks][6][:name]).to eq('Hot Dogs')
+      expect(savory_snacks[:data][:attributes][:snacks][6][:name]).to eq('Sun Chips')
     end
   end
 
