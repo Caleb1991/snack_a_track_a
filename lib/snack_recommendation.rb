@@ -14,7 +14,7 @@ module SnackRecommendation
       end
     end
 
-    new = recommended.sort_by {|key,value| value}.reverse.flatten.find_all do |variable|
+    recommendations = recommended.sort_by {|key,value| value}.reverse.flatten.find_all do |variable|
     variable.class == Snack
     end
   end
