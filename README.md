@@ -1,5 +1,5 @@
 # Snack-a-Track-a V 1.0
-Snack-a-Track-a is an API created to help track all of the snacks a user consumes. A user may add snacks they have eaten, rate snacks, as well as recieve recommendations for snacks via a collaborative filter. This API is deployed to Heroku and can be accessed with the domain and necessary URI's.
+Snack-a-Track-a is an API created to help track all of the snacks a user consumes. A user may add snacks they have eaten, rate snacks, as well as recieve recommendations for snacks via a collaborative filter algorithm. This API is deployed to Heroku and can be accessed with the domain and necessary URI's.
 
 ## Schema
 
@@ -84,7 +84,7 @@ https://lit-reaches-91268.herokuapp.com/
   -Can send `?limit=x` as query parameters (defaults to 5)
   
 **get** `/api/v1/users/:user_id/snacks/snack_recommendations` </br>
-  -Returns recommended snacks for a given user
+  -Returns recommended snacks for a given user via a collaborative filter algorithm
 
 ## Snacks::Reviews
 **get** `/api/v1/snacks/:snack_id/reviews` </br>
