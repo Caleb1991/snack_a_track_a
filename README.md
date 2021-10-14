@@ -79,7 +79,7 @@ https://lit-reaches-91268.herokuapp.com/
 **get** `/api/v1/users/:user_id/snacks` </br>
   -Returns all snacks for a given user
   
-**get** `/api/v1/users/:user_id/users_top_rated_snacks` </br>
+**get** `/api/v1/users/:user_id/snacks/users_top_rated_snacks` </br>
   -Returns the snacks a user has rated the highest </br>
   -Can send `?limit=x` as query parameters (defaults to 5)
   
