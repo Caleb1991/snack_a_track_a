@@ -6,6 +6,12 @@ Ruby 2.7.2 </br>
 Rails 5.2.6 </br>
 RSpec 3.1
 
+## Setup
+Being deployed to Heroku, you can use this part of the application without cloning it down. In the event you would like to make changes for it to better suit your needs; fork this repository, clone it, then run: </br>
+`bundle exec install` </br>
+`rails db:{create,migrate,seed}` </br>
+`rails g rspec:install`
+
 ## Schema
 
 <img width="666" alt="Screen Shot 2021-10-10 at 7 53 50 AM" src="https://user-images.githubusercontent.com/78196294/136698698-76972f41-524b-46e3-8729-135d4af0ba4f.png">
