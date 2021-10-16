@@ -103,4 +103,30 @@ class UserSerializer
       }
     }
   end
+
+  def self.successful_login(user)
+    {data:
+      {
+        id: user.id,
+        type: 'User',
+        attributes:
+        {
+          message: 'You have successfully logged in!'
+        }
+      }
+    }
+  end
+
+  def self.unsuccessful_login
+    {data:
+      {
+        id: nil,
+        type: 'User',
+        attributes:
+        {
+          message: 'Your username or password is incorrect.'
+        }
+      }
+    }
+  end
 end

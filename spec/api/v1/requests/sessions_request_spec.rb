@@ -8,11 +8,33 @@ RSpec.describe 'Sessions API' do
 
   describe '#login_user' do
     it 'logs a user in if the username and password match' do
-      post '/api/v1/sessions'
+      user_credentials = {
+        username: 'Roald1991',
+        password: 'PenguinsRule11'
+      }
+
+      post '/api/v1/sessions', params: user_credentials, as: :json
+
+      expect(response).to be_successful
 
       logged_in_user = JSON.parse(response.body, symbolize_names: true)
 
-      expect(logged_in_user[:data][:attributes][:messgae]).to eq('User successfully logged in.')
+      expect(logged_in_user[:data][:attributes][:message]).to eq('You have successfully logged in!')
+    end
+
+    it 'returns an error if the username or password do not match' do
+      user_credentials = {
+        username: 'Roald1991',
+        password: 'PenguinsRe11'
+      }
+
+      post '/api/v1/sessions', params: user_credentials, as: :json
+
+      expect(response).to_not be_successful
+
+      unsuccessful_login = JSON.parse(response.body, symbolize_names: true)
+
+      expect(unsuccessful_login[:data][:attributes][:message]).to eq('Your username or password is incorrect.')
     end
   end
 end
