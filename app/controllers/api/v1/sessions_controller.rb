@@ -1,5 +1,6 @@
 class Api::V1::SessionsController < ApplicationController
   def create
+    User.create()
     user = User.find_by(username: user_credentials[:username])
 
     if user && user.authenticate(user_credentials[:password])
