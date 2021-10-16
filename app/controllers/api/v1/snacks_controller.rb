@@ -17,7 +17,7 @@ class Api::V1::SnacksController < ApplicationController
     snack = Snack.create(snack_attributes)
 
     if snack.save
-      render json: SnackSerializer.new_snack(snack)
+      render json: SnackSerializer.new_snack(snack), status: 201
     else
       render json: SnackSerializer.creation_error(snack), status: 409
     end

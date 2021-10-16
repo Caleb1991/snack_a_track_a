@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.create(user_attributes)
 
     if user.save
-      render json: UserSerializer.new_user(user)
+      render json: UserSerializer.new_user(user), status: 201
     else
       render json: UserSerializer.new_user_errors(user), status: 409
     end

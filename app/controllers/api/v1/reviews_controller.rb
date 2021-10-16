@@ -7,7 +7,7 @@ class Api::V1::ReviewsController < ApplicationController
     end
 
     if review.save
-      render json: ReviewSerializer.new_review(review)
+      render json: ReviewSerializer.new_review(review), status: 201
     else
       render json: ReviewSerializer.creation_error(review), status: 409
     end
