@@ -3,7 +3,7 @@ class Api::V1::UsersSnacksController < ApplicationController
     users_snack = UsersSnack.create(users_snack_parameters)
 
     if users_snack.save
-      render json: UsersSnackSerializer.new_users_snack(users_snack)
+      render json: UsersSnackSerializer.new_users_snack(users_snack), status: 201
     else
       render json: UsersSnackSerializer.creation_error(users_snack), status: 409
     end
