@@ -129,4 +129,17 @@ class UserSerializer
       }
     }
   end
+
+  def self.user_logged_out
+    {data:
+      {
+        id: nil,
+        type: 'User',
+        attributes:
+        {
+          message: 'You have successfully logged out.'
+        }
+      }
+    }
+  end
 end

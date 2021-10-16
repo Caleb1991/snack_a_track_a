@@ -9,6 +9,12 @@ class Api::V1::SessionsController < ApplicationController
       render json: UserSerializer.unsuccessful_login, status: 400
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+
+    render json: UserSerializer.user_logged_out
+  end
   
   private
   def user_credentials
