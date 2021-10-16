@@ -24,6 +24,9 @@ https://lit-reaches-91268.herokuapp.com/
 **delete** `/api/v1/users/:id` </br>
   -Deletes a given user
   
+**post** `/api/v1/sessions` </br>
+  -Logs a user in
+  
 ## Snacks
 **get** `/api/v1/snacks` </br>
   -Returns all snacks
