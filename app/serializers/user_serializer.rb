@@ -30,6 +30,7 @@ class UserSerializer
         type: 'User',
         attributes:
         {
+          id: user_attributes.id,
           username: user_attributes.username,
           first_name: user_attributes.first_name,
           last_name: user_attributes.last_name,
