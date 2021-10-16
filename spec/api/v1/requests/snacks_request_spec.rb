@@ -47,7 +47,7 @@ RSpec.describe 'Snack API' do
   describe '#create' do
     it 'creates a snack' do
       snack_payload = {
-        name: 'Doritos',
+        name: 'Kit-Kat',
         description: 'BOLD',
         savory: true,
         sweet: false
@@ -81,7 +81,7 @@ RSpec.describe 'Snack API' do
 
       errors = JSON.parse(response.body, symbolize_names: true)
 
-      expect(errors[:data][:attributes][:errors]).to eq(["Description can't be blank", "Sweet is not included in the list"])
+      expect(errors[:data][:attributes][:errors]).to eq(["Name has already been taken", "Description can't be blank", "Sweet is not included in the list"])
     end
   end
 

@@ -1,5 +1,6 @@
 class Snack < ApplicationRecord
-  validates_presence_of :name, :description
+  validates :name, presence: true, uniqueness: true
+  validates_presence_of :description
   validates :savory, :sweet, inclusion: [true, false]
   has_many :users_snacks, dependent: :destroy
   has_many :users, through: :users_snacks
