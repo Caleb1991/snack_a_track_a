@@ -37,4 +37,25 @@ RSpec.describe 'Sessions API' do
       expect(unsuccessful_login[:data][:attributes][:message]).to eq('Your username or password is incorrect.')
     end
   end
+
+  describe '#user_logout' do
+    it 'logs a user out' do
+      user_credentials = {
+        username: 'Roald1991',
+        password: 'PenguinsRule11'
+      }
+
+      post '/api/v1/sessions', params: user_credentials, as: :json
+
+      expect(response).to be_successful
+
+      delete '/api/v1/sessions'
+
+      expect(response).to be_successful
+
+      logout_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(logout_message[:data][:attributes][:message]).to eq('You have successfully logged out.')
+    end
+  end
 end
