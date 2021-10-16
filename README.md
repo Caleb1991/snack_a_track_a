@@ -25,7 +25,7 @@ https://lit-reaches-91268.herokuapp.com/
   -Deletes a given user
   
 **post** `/api/v1/sessions` </br>
-  -Logs a user in
+  -Logs a user in (must send credentials as a JSON payload)
   
 ## Snacks
 **get** `/api/v1/snacks` </br>
