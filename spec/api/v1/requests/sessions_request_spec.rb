@@ -10,7 +10,7 @@ RSpec.describe 'Sessions API' do
     it 'logs a user in if the username and password match' do
       user_credentials = {
         username: 'Roald1991',
-        key: 'PenguinsRule11'
+        password: 'PenguinsRule11'
       }
 
       post '/api/v1/sessions', params: user_credentials, as: :json
@@ -25,7 +25,7 @@ RSpec.describe 'Sessions API' do
     it 'returns an error if the username or password do not match' do
       user_credentials = {
         username: 'Roald1991',
-        key: 'PenguinsRe11'
+        password: 'PenguinsRe11'
       }
 
       post '/api/v1/sessions', params: user_credentials, as: :json
