@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :sessions, only: :create
-      delete '/sessions', to: 'sessions#destroy'
       resources :users do
         get '/snacks/users_top_rated_snacks', to: '/api/v1/users/snacks#users_top_rated_snacks'
         get '/snacks/snack_recommendations', to: '/api/v1/users/snacks#snack_recommendations'
