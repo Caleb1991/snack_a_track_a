@@ -1,6 +1,11 @@
 # Snack-a-Track-a V 1.0
 Snack-a-Track-a is an API created to help track all of the snacks a user consumes. A user may add snacks they have eaten, rate snacks, as well as recieve recommendations for snacks via a collaborative filter algorithm. This API is deployed to Heroku and can be accessed with the domain and necessary URI's. The in progress front end codebase can be found [here](https://github.com/Caleb1991/snack_a_track_a_fe)
 
+## Tech Utilized
+Ruby 2.7.2 </br>
+Rails 5.2.6 </br>
+RSpec 3.1
+
 ## Schema
 
 <img width="666" alt="Screen Shot 2021-10-10 at 7 53 50 AM" src="https://user-images.githubusercontent.com/78196294/136698698-76972f41-524b-46e3-8729-135d4af0ba4f.png">
