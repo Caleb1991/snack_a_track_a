@@ -1,6 +1,6 @@
 class Api::V1::SessionsController < ApplicationController
   def create
-    user = User.where('username = ?', user_credentials[:username])
+    user = User.where('username = ?', user_credentials[:username]).first
 
     if user && user.authenticate(user_credentials[:password])
       render json: UserSerializer.successful_login(user), status: 201
