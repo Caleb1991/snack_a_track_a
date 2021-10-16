@@ -6,7 +6,7 @@ RSpec.describe 'Sessions API' do
     @user_1 = User.create!(username: 'Roald1991', first_name: 'Roald', last_name: 'Roaldington', email: 'RoaldRules91@Gmail.Com', password: 'PenguinsRule11', password_confirmation: 'PenguinsRule11')
   end
 
-  describe '#index' do
+  describe '#create' do
     it 'logs a user in if the username and password match' do
       user_credentials = {
         username: 'Roald1991',

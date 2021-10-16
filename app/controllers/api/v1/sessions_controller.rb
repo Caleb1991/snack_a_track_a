@@ -1,8 +1,9 @@
 class Api::V1::SessionsController < ApplicationController
   def create
-    user = User.find_by(username: user_credentials[:username])
+    credentials = user_credentials
+    user = User.find_by(username: credentials[:username])
 
-    if user && user.authenticate(user_credentials[:password])
+    if user && user.authenticate(credentials[:password])
       render json: UserSerializer.successful_login(user), status: 201
     else
       render json: UserSerializer.unsuccessful_login, status: 400
